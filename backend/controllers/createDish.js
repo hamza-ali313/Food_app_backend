@@ -4,7 +4,7 @@ import upload from "../multer-config.js"; // Import your multer configuration
 const createDish = async (req, res, next) => {
   try {
     // Wrap the callback function in an async function
-    upload.single('dishImage')(req, res, async (err) => {
+    upload.single("dishImage")(req, res, async (err) => {
       if (err) {
         console.error("Error uploading image:", err);
         return res.status(500).json({ error: "Could not upload image" });

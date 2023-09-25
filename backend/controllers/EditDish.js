@@ -1,5 +1,5 @@
 import Dish from "../models/dish.js"; // Import your Dish model
-import upload from "../multer-config.js"; // Import your multer configuration
+// import upload from "../multer-config.js"; // Import your multer configuration
 
 const editDish = async (req, res, next) => {
   try {
