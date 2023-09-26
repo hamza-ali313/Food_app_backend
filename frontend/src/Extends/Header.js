@@ -16,7 +16,7 @@ import {
   solid,
   regular,
 } from "@fortawesome/fontawesome-svg-core/import.macro";
-import logo from "../images/headerLogo.png";
+// import logo from "../images/headerLogo.png";
 import '../index.css'
 function Header() {
   return (
@@ -24,7 +24,7 @@ function Header() {
       <Navbar expand="lg">
         <Container>
           <Navbar.Brand href="#home">
-            <img src={logo} />
+            {/* <img src={logo} /> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

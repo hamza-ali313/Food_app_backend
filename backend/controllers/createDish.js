@@ -11,13 +11,14 @@ const createDish = async (req, res, next) => {
       }
 
       // If the image upload is successful, continue with creating the dish
-      const { dishName, description, price } = req.body;
+      const { dishName, description, price, role } = req.body;
 
       const dish = new Dish({
         dishName,
         description,
         price,
-        dishImage: req.file.filename,
+        role,
+        // dishImage: req.file.filename,
       });
 
       // Now you can use await here

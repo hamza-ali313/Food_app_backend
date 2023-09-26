@@ -18,9 +18,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: { // foodie or chef
+    type: String,
+    required: true,
+  },
   // Add more user-related fields here, such as name, profile picture, etc.
 });
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;

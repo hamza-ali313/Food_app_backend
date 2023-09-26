@@ -1,39 +1,86 @@
-/* FONTS 
+ /* FONTS  */
+ @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
 
-*/
-@font-face {
-  font-family: Robust;
-  src: url("./Fonts/Robusta Demo.ttf");
-}
-@font-face {
-  font-family: sarcastic;
-  src: url("./Fonts/sarcastic-inline-regular.ttf");
-}
+ @font-face {
+   font-family: Robust;
+   src: url("./Fonts/Robusta Demo.ttf");
+ }
 
-body {
-}
+ @font-face {
+   font-family: sarcastic;
+   src: url("./Fonts/sarcastic-inline-regular.ttf");
+ }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
+ body {}
 
-a {
-  transition: all 350ms ease-in-out;
-  font-weight: 400;
-  text-decoration: unset;
-}
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+ }
 
-@media only screen and (max-width: 1399px) {
-}
-@media only screen and (max-width: 1199px) {
-}
+ ul {
+   margin: 0;
+   padding: 0;
+ }
 
-@media only screen and (max-width: 767px) {
-}
+ a {
+   transition: all 350ms ease-in-out;
+   font-weight: 400;
+   text-decoration: unset;
+ }
 
-@media only screen and (max-width: 550px) {
-}
+ /* create dish css start */
+ .create-dish-frm input,
+ .create-dish-frm select {
+   width: 100%;
+ }
 
-@media only screen and (max-width: 480px) {
+ .create-dish-frm textarea {
+   width: 100%;
+   resize: none;
+ }
+
+ .create-dish-frm label {
+   display: block;
+ }
+
+ .create-dish-frm h2 {
+   font-family: 'Nunito', sans-serif;
+ }
+
+ /* create dish css end */
+
+ /* allDishes css start */
+
+ .dish-sec div {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
 }
+ .dish-sec div h3{
+  font-size: 22px;
+  font-family: sarcastic; 
+}
+ .dish-sec p{
+  font-size: 22px;
+  font-family: sarcastic; 
+}
+ .dish-sec p{
+ margin: 20px 0;
+}
+.dish-sec img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+ /* allDishes css end */
+ @media only screen and (max-width: 1399px) {}
+
+ @media only screen and (max-width: 1199px) {}
+
+ @media only screen and (max-width: 767px) {}
+
+ @media only screen and (max-width: 550px) {}
+
+ @media only screen and (max-width: 480px) {}

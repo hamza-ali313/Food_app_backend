@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from 'dotenv';
 import dishRoutes from "./Routes/DishRoutes.js"
+import authRoutes from "./Routes/authRouts.js"
 import multer from "multer";
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 // Routes here
 app.use('/api/dishes', dishRoutes);
+app.use('/api/auth', authRoutes);
 
 mongoose.connect(process.env.MONGO, {
     useNewUrlParser: true,

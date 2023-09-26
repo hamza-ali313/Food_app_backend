@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "./apiConfig";
+import { Button, Container, Row, Col } from "react-bootstrap";
 
 function CreateDish() {
+  const [frm, setFrm] = useState(true)
+
   const [dishData, setDishData] = useState({
     dishName: "",
     description: "",
@@ -56,50 +59,63 @@ function CreateDish() {
   };
 
   return (
-    <div>
-      <h2>Create a Dish</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <br />
-          <input
-            type="text"
-            name="dishName"
-            value={dishData.dishName}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Description
-          <br />
-          <textarea
-            name="description"
-            value={dishData.description}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Price
-          <br />
-          <input
-            type="number"
-            name="price"
-            value={dishData.price}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Upload Image
-          <br />
-          <input type="file" name="dishImage" onChange={handleChange} />
-        </label>
-        <br />
-        <button type="submit">Create Dish</button>
-      </form>
-    </div>
+    <Container>
+      <Button variant="primary" className="float-right" onClick={() => setFrm(!frm)}>Create Dish</Button>{' '}
+      <Row className="justify-content-center">
+        <Col lg={4}>
+          {
+            frm ? (
+              <div className="create-dish-frm">
+                <h2>Create  Dish</h2>
+                <form onSubmit={handleSubmit}>
+                  <label>
+                    Name:
+                    <br />
+                    <input
+                      type="text"
+                      name="dishName"
+                      value={dishData.dishName}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Description
+                    <br />
+                    <textarea
+                      name="description"
+                      value={dishData.description}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Price
+                    <br />
+                    <input
+                      type="number"
+                      name="price"
+                      value={dishData.price}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <br />
+                  <br />
+                  <label>
+                    Upload Image
+                    <br />
+                    <input type="file" name="dishImage" onChange={handleChange} />
+                  </label>
+                  <br />
+                  <Button type="submit" variant="primary">Create Dish</Button>
+                </form>
+              </div>
+            ) : <div></div>
+          }
+        </Col>
+      </Row>
+    </Container>
+
   );
 }
 
