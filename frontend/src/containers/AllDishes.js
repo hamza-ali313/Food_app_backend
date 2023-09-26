@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 // import dish from "../images/lunch1.png"
 import axios from 'axios'
-import { BASE_URL } from './apiConfig'
+import { BASE_URL } from '../services/APIConfig'
 
 
 const AllDishes = () => {

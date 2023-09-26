@@ -3,6 +3,7 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../services/APIConfig";
 
 
 const Login = () => {
@@ -17,7 +18,7 @@ const Login = () => {
     function LoginFunc() {
         if (LoginData.userName && LoginData.Password && LoginData.Role) {
             axios
-                .post("/api/auth/login", {
+                .post(`${BASE_URL}/auth/login`, {
                     username: LoginData.userName,
                     password: LoginData.Password,
                     role: LoginData.Role,

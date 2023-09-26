@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "./apiConfig";
+import { BASE_URL } from "../services/APIConfig";
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 function CreateDish() {
