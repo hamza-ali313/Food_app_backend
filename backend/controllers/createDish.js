@@ -18,7 +18,7 @@ const createDish = async (req, res, next) => {
         description,
         price,
         role,
-        // dishImage: req.file.filename,
+        dishImage: req.file.filename,
       });
 
       // Now you can use await here

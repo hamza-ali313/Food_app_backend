@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import dishRoutes from "./Routes/DishRoutes.js"
 import authRoutes from "./Routes/authRouts.js"
 import multer from "multer";
+
 dotenv.config();
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cookieParser());
 // Routes here
 app.use('/api/dishes', dishRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/uploads', express.static("uploads"));
 
 mongoose.connect(process.env.MONGO, {
     useNewUrlParser: true,

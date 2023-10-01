@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "./apiConfig";
+import { BASE_URL } from "../services/APIConfig";
 
 const Register = () => {
   const [name, setName] = useState("");
