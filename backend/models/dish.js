@@ -20,10 +20,10 @@ const dishSchema = new mongoose.Schema({
   dishImage: {
     type: String,
   },
-  // chef: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User', // Refers to the 'User' model
-  // },
+  chef_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Refers to the 'User' model
+  },
   // You can add more fields here as needed
 });
 

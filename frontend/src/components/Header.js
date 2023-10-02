@@ -23,7 +23,7 @@ function Header() {
     <div className="main-header">
       <Navbar expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#home">/
             {/* <img src={logo} /> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

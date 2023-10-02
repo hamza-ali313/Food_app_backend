@@ -1,49 +1,28 @@
-import React, { Component, useEffect } from "react";
-import ReactDOM, { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
-import {
-  Container,
-  Row,
-  Col,
-  Carousel,
-  Nav,
-  Tab,
-  Sonnet,
-  Button,
-} from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  solid,
-  regular,
-  brands,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
-import CreateDish from "./containers/CreateDish.js";
-import Register from "./containers/Register";
-import Login from "./containers/Login.js";
-import AllDishes from "./containers/AllDishes.js";
-// IMPORT PAGES
+import { Provider, useSelector } from "react-redux"; // Import useSelector
+import PrivateRoute from "./containers/ProtectedRoute.js"; // Import your PrivateRoute component
 
-// NEW
+import App from "./App.js";
+
+import { Store } from "./Redux/Store";
+
 function Main() {
+  // const userRole = useSelector((state) => state.auth.userRole);
+  // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
-    <BrowserRouter>
-      {/* <header className="pageheader"><Header /></header> */}
-      <Routes>
-        <Route path="/" element={<Register/>} className="ppp" />
-        <Route path="/createdish" element={<CreateDish />} className="ppp" />
-        <Route path="login" element={<Login />} className="ppp" />
-        <Route path="alldishes" element={<AllDishes />} className="ppp" />
-      </Routes>
-      {/* <footer><Footer /></footer> */}
-    </BrowserRouter>
+    <Provider store={Store}>
+      <App />
+    </Provider>
   );
 }
+
 ReactDOM.render(<Main />, document.getElementById("root"));
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

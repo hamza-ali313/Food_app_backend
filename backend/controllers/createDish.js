@@ -11,20 +11,20 @@ const createDish = async (req, res, next) => {
       }
 
       // If the image upload is successful, continue with creating the dish
-      const { dishName, description, price, role } = req.body;
+      const { dishName, description, price, chef_id } = req.body;
 
       const dish = new Dish({
         dishName,
         description,
         price,
-        role,
+        chef_id,
         dishImage: req.file.filename,
       });
 
       // Now you can use await here
       const newDish = await dish.save();
-
-      res.status(201).json(newDish);
+      res.send("your Dish has been created successfully");
+      // res.status(201).json(newDish);
     });
   } catch (error) {
     console.error("Error creating dish:", error);

@@ -21,7 +21,7 @@ export const Login = async (req, res, next) => {
             {
                 username: req.body.username,
                 password: req.body.password,
-                role: req.body.role,
+                
             });
         if (!user) {
             res.send("user is not found");
