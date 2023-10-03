@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
-import { Provider, useSelector } from "react-redux"; // Import useSelector
 
 import ProtectedRoute from "./containers/ProtectedRoute";
 import CreateDish from "./containers/CreateDish";
