@@ -17,13 +17,13 @@ const dishSchema = new mongoose.Schema({
     required: true,
     min: 0, // Minimum price should be 0
   },
-  dishImage: {
-    type: String,
-  },
-  chef_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Refers to the 'User' model
-  },
+  // dishImage: {
+  //   type: String,
+  // },
+  // chef_id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'User', // Refers to the 'User' model
+  // },
   // You can add more fields here as needed
 });
 
@@ -31,9 +31,3 @@ const dishSchema = new mongoose.Schema({
 const Dish = mongoose.model('Dish', dishSchema);
 
 export default Dish
-
-// chef: {
-//   type: mongoose.Schema.Types.ObjectId,
-//   ref: 'Chef', // Reference to the Chef model (if you have one)
-//   required: true,
-// },

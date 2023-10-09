@@ -1,15 +1,17 @@
-import Dish from "../models/dish.js";
+import deleteDishService from "../services/deleteDishService.js";
 
 const deleteDish = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const deletedDish = await Dish.findByIdAndDelete(id);
-    // if dish is not found deletedDish = "" that is a flasy value the opposite of which is truthy vlaue
-    if (!deletedDish) {
+    const { id } = req.params; // Use destructuring to extract the id from req.params
+    const deleteRes = await deleteDishService(id);
+    
+    if (deleteRes.error) {
+      // Handle the case where the dish was not found
       return res.status(404).json({ error: "Dish not found" });
     }
-    const dishes = await Dish.find();
-    res.json(dishes);
+    
+    // Handle successful deletion
+    res.json(deleteRes);
   } catch (error) {
     console.error("Error deleting dish:", error);
     res.status(500).json({ error: "Could not delete dish" });
@@ -17,4 +19,3 @@ const deleteDish = async (req, res, next) => {
 };
 
 export default deleteDish;
- 

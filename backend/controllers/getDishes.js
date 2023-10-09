@@ -1,8 +1,12 @@
-import Dish from "../models/dish.js";
+import getDihService from "../services/getDishService.js";
 
-const getDishes = async(req,res,next)=>{
- const dishes = await Dish.find()
- res.json(dishes)
-}
+const getDishes = async (req, res, next) => {
+  try {
+    const dishes = await getDihService();
+    res.json(dishes);
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export default getDishes;

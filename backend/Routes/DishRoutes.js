@@ -1,5 +1,5 @@
 import express from "express";
-import createDish from "../controllers/createDish.js";
+import {createDish} from "../controllers/createDish.js";
 import getDishes from "../controllers/getDishes.js";
 import deleteDish from "../controllers/deleteDish.js";
 import editDish from "../controllers/EditDish.js";

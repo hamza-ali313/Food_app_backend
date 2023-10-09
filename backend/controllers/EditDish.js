@@ -1,30 +1,11 @@
-import Dish from "../models/dish.js"; // Import your Dish model
-// import upload from "../multer-config.js"; // Import your multer configuration
+import editDishService from "../services/editDishService.js";
 
 const editDish = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { dishName, description, price } = req.body;
+    const updatedDish = await editDishService({dishName, description, price,id})
 
-    // Find the dish by its ID
-    const existingDish = await Dish.findById(id);
-
-    if (!existingDish) {
-      return res.status(404).json({ error: "Dish not found" });
-    }
-
-    // Check if a new image is uploaded and update it
-    if (req.file) {
-      existingDish.dishImage = req.file.filename;
-    }
-
-    // Update the textual properties
-    existingDish.dishName = dishName;
-    existingDish.description = description;
-    existingDish.price = price;
-
-    // Save the updated dish
-    const updatedDish = await existingDish.save();
 
     res.json(updatedDish);
   } catch (error) {
