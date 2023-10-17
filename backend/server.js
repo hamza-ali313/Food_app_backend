@@ -4,18 +4,20 @@ import cors from 'cors';
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from 'dotenv';
-import dishRoutes from "./Routes/DishRoutes.js"
-import authRoutes from "./Routes/authRouts.js"
-import multer from "multer";
+import dishRoutes from "./routes/DishRoutes.js"
+import authRoutes from "./routes/authRouts.js"
+// import multer from "multer";
+import {errorMiddleware} from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
-
+app.use(errorMiddleware)
 // Routes here
 app.use('/api/dishes', dishRoutes);
 app.use('/api/auth', authRoutes);

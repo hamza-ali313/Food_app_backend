@@ -1,16 +1,20 @@
-import createDishRepo from "../repositories/createDishRepo.js";
-import Dish from "../models/dish.js";
+import bcrypt from 'bcrypt'
+import createDishRepo from "../repositories/createDishRepo.js"
+import Dish from '../models/dish.js';
+
 // Create a new dish with the provided payload
-const createDishService = async (payload) => {
+export const createDishService = async (payload) => {
   try {
-    // You can add any validation or business logic here
-    // For now, assume payload is valid and directly pass it to the repository
+    // Validate and hash the password using bcrypt
+
+    // Create a new Dish instance with the hashed password
     const newDish = {
-      dishName:payload.dishName,
-      description:payload.description,
-      price:payload.price,
+      dishName: payload.dishName,
+      description: payload.description,
+      price: payload.price,
     };
 
+    // Save the dish to the database
     const savedDish = await createDishRepo(newDish);
     return savedDish;
   } catch (error) {
@@ -19,4 +23,3 @@ const createDishService = async (payload) => {
   }
 };
 
-export default createDishService;
