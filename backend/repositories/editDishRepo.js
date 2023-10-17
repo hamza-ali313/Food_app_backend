@@ -2,10 +2,12 @@ import Dish from "../models/dish.js"; // Import your Dish model
 
 const editDishRepo = async (payload) => {
   try {
-    const {id,dishName, description, price,} = payload;
-
+    console.log(payload,"repo")
+    const {id,dishName, description, price,} = payload.value;
+    
     // Find the dish by its ID
     const existingDish = await Dish.findById(id);
+    console.log(payload,"repo")
 
     if (!existingDish) {
       return ({error: "Dish not found" });

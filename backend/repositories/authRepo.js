@@ -12,7 +12,8 @@ export const registerRepo = async (payload) => {
 
 export const loginRepo = async (payload) => {
   try {
-    const user = await User.findOne(payload);
+    console.log(payload)
+    const user = await User.findOne({username:payload.value.username});
     if (!user) {
       throw new Error("User not found");
     }
@@ -23,9 +24,4 @@ export const loginRepo = async (payload) => {
   }
 };
 
-// export const Logout = (req,res,next)=>{
-//   try {
-//   } catch (error) {
-//       console.log(error)
-//   }
-// }
+
