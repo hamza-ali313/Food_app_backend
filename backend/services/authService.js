@@ -18,7 +18,7 @@ export const registerService = async (payload) => {
       role: payload.role,
     };
     const validatedPayload = validateAuthPayload(newUser);
-    const userGenerated = await registerRepo(validatedPayload);
+    const userGenerated = await registerRepo(validatedPayload.value);
     return userGenerated;
   } catch (error) {
     console.log(error);

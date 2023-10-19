@@ -12,11 +12,6 @@ const editDishService = async (payload) => {
       return res.status(404).json({ error: "Dish not found" });
     }
 
-    // Check if a new image is uploaded and update it
-    // if (req.file) {
-    //   existingDish.dishImage = req.file.filename;
-    // }
-
     return updatedDish;
 
   } catch (error) {

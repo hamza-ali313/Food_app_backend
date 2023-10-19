@@ -7,15 +7,10 @@ import getChefDishes from "../controllers/chefDishes.js";
 
 const router = express.Router();
 
-// createDish
 router.post("/createDish", createDish);
-//get all dishes
 router.get("/", getDishes);
-// get chef related dishes
 router.get("/:chef_ID", getChefDishes);
-// delete specefic dish
 router.post("/:id", deleteDish);
-//edit dish
 router.put("/:id", editDish);
 
 export default router;

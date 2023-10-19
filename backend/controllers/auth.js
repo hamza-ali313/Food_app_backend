@@ -7,7 +7,7 @@ export const Register = async (req, res, next) => {
         const newUser = await registerService(req.body);
         res.json(newUser);
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 }
 
@@ -16,7 +16,7 @@ export const Login = async (req, res, next) => {
         const user = await loginService(req.body);
         await res.json(user);
     } catch (error) {
-        console.log(error)
+       next(error)
     }
 }
 
