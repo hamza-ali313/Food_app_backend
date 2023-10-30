@@ -5,7 +5,7 @@ const getDishes = async (req, res, next) => {
     const dishes = await getDihService();
     res.json(dishes);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 

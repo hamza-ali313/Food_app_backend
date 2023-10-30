@@ -4,8 +4,12 @@ const editDish = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { dishName, description, price } = req.body;
-    const updatedDish = await editDishService({dishName, description, price,id})
-
+    const updatedDish = await editDishService({
+      dishName,
+      description,
+      price,
+      id,
+    });
 
     res.json(updatedDish);
   } catch (error) {

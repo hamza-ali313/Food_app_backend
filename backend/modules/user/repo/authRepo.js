@@ -1,4 +1,4 @@
-import User from "../models/user.js";
+import User from "../../../models/user.js";
 
 export const registerRepo = async (payload) => {
   try {
@@ -12,8 +12,8 @@ export const registerRepo = async (payload) => {
 
 export const loginRepo = async (payload) => {
   try {
-    console.log(payload)
-    const user = await User.findOne({username:payload.value.username});
+    console.log(payload);
+    const user = await User.findOne({ username: payload.value.username });
     if (!user) {
       throw new Error("User not found");
     }
@@ -23,5 +23,3 @@ export const loginRepo = async (payload) => {
     throw error;
   }
 };
-
-

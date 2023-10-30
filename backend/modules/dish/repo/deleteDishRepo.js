@@ -1,4 +1,4 @@
-import Dish from "../models/dish.js";
+import Dish from "../../../models/dish.js";
 
 const deleteDishRepo = async (id) => {
   const deletedDish = await Dish.findByIdAndDelete(id);

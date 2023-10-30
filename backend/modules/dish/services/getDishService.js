@@ -1,5 +1,5 @@
-import getDishesRepo from "../repositories/getDishesRepo.js";
-const getDihService = async (req,res,next) => {
+import getDishesRepo from "../repo/getDishesRepo.js";
+const getDihService = async (req, res, next) => {
   try {
     const getDishes = await getDishesRepo();
     return getDishes;
@@ -9,4 +9,3 @@ const getDihService = async (req,res,next) => {
 };
 
 export default getDihService;
- 

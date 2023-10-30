@@ -1,4 +1,4 @@
-import Dish from "../models/dish.js";
+import Dish from "../../../models/dish.js";
 
 const getChefDishes = async (req, res, next) => {
   const chefId = req.params.chef_ID; 

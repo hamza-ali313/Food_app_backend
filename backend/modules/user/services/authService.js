@@ -1,16 +1,19 @@
 import bcrypt from "bcrypt";
-import {validateAuthPayload,validateLoginPayload} from "../utils/payloadValidation.js";
-import { registerRepo, loginRepo } from "../repositories/authRepo.js";
+import jwt from "jsonwebtoken";
+import {
+  validateAuthPayload,
+  validateLoginPayload,
+} from "../../../utils/payloadValidation.js";
+import { registerRepo, loginRepo } from "../repo/authRepo.js";
 
 export const registerService = async (payload) => {
   try {
-
     if (!payload.password) {
-        throw new Error("Password is required");
-      }
-      
-    const hashedPassword = await bcrypt.hash(payload.password, 10); // 10 is the number of salt rounds
-    console.log(hashedPassword)
+      throw new Error("Password is required");
+    }
+
+    const hashedPassword = await bcrypt.hash(payload.password, 10); 
+    console.log(hashedPassword);
     const newUser = {
       username: payload.username,
       email: payload.email,
@@ -31,12 +34,11 @@ export const loginService = async (payload) => {
       username: payload.username,
       password: payload.password,
     };
-    console.log(user)
     const validatedPayload = validateLoginPayload(user);
-    console.log(validatedPayload)
     const loggedInUser = await loginRepo(validatedPayload);
-
-    return loggedInUser;
+    const token = jwt.sign(loggedInUser.toJSON(), process.env.MONGO);
+    return token;
+   
   } catch (error) {
     console.log(error);
   }

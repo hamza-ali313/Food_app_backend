@@ -1,5 +1,5 @@
-import createDishRepo from "../repositories/createDishRepo.js";
-import { validateDishPayload } from "../utils/payloadValidation.js";
+import createDishRepo from "../repo/createDishRepo.js";
+import { validateDishPayload } from "../../../utils/payloadValidation.js";
 export const createDishService = async (payload) => {
   try {
     const newDish = {

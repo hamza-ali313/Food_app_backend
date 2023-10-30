@@ -1,8 +1,8 @@
-import Dish from "../models/dish.js";
+import Dish from "../../../models/dish.js";
 
 const createDishRepo = async (payload) => {
   try {
-    const dish = new Dish(payload); 
+    const dish = new Dish(payload);
 
     const newDish = await dish.save();
     return newDish;
