@@ -1,16 +1,24 @@
 import editDishService from "../services/editDishService.js";
+import createBoomError from '../../../middleware/boomError.js'
 
 const editDish = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { dishName, description, price } = req.body;
-    const updatedDish = await editDishService({dishName, description, price,id})
-
+    const updatedDish = await editDishService({
+      dishName,
+      description,
+      price,
+      id,
+    });
 
     res.json(updatedDish);
   } catch (error) {
-    console.error("Error editing dish:", error);
-    res.status(500).json({ error: "Could not edit dish" });
+    return createBoomError(
+      500,
+      "Not edited",
+      "could not edit dish"
+    );
   }
 };
 
