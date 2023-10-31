@@ -1,18 +1,17 @@
 import deleteDishService from "../services/deleteDishService.js";
+import createBoomError from '../../../middleware/boomError.js'
 
 const deleteDish = async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleteRes = await deleteDishService(id);
-
-    if (deleteRes.error) {
-      return res.status(404).json({ error: "Dish not found" });
-    }
-
     res.json(deleteRes);
   } catch (error) {
-    console.error("Error deleting dish:", error);
-    res.status(500).json({ error: "Could not delete dish" });
+    return createBoomError(
+      500,
+      "Not deleted",
+      "could not delete dish"
+    );
   }
 };
 

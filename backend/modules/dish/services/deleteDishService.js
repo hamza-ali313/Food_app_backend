@@ -1,16 +1,23 @@
 import deleteDishRepo from "../repo/deleteDishRepo.js";
+import createBoomError from '../../../middleware/boomError.js'
+
 const deleteDishService = async (id) => {
   try {
     const deletedDishRes = await deleteDishRepo(id);
     const { deletedDish, dishes } = deletedDishRes;
-    if (!deletedDish) {
-      return { error: "Dish not found" };
+   
+    if(!deletedDish) {
+      const notFound = createBoomError(401,'Not Found','The dish is not found');
+      return notFound;
     }
 
     return dishes;
   } catch (error) {
-    console.error("Error deleting dish:", error);
-    throw new Error("Could not delete dish");
+    return createBoomError(
+      500,
+      "Not deleted",
+      "could not delete dish in service"
+    );
   }
 };
 

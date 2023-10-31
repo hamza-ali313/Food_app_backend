@@ -1,5 +1,8 @@
 import createDishRepo from "../repo/createDishRepo.js";
+import createBoomError from '../../../middleware/boomError.js'
+
 import { validateDishPayload } from "../../../utils/payloadValidation.js";
+
 export const createDishService = async (payload) => {
   try {
     const newDish = {
@@ -11,7 +14,6 @@ export const createDishService = async (payload) => {
     const savedDish = await createDishRepo(validatedDish.value);
     return savedDish;
   } catch (error) {
-    console.error("Error creating dish:", error);
-    throw new Error("Could not create dish");
+    return createBoomError(500,'Not Found','could not create dish in service')
   }
 };
