@@ -29,7 +29,6 @@ export const registerService = async (payload) => {
 };
 
 export const loginService = async (payload) => {
-  try {
     const user = {
       username: payload.username,
       password: payload.password,
@@ -38,8 +37,5 @@ export const loginService = async (payload) => {
     const loggedInUser = await loginRepo(validatedPayload);
     const token = jwt.sign(loggedInUser.toJSON(), process.env.MONGO);
     return token;
-   
-  } catch (error) {
-    console.log(error);
-  }
+ 
 };
