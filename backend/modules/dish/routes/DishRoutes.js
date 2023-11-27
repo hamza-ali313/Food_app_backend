@@ -11,8 +11,8 @@ router.get("/", getDishes);
 
 // router.get("/:id", getDish);
 
-router.put("/:id", updateDish);
+router.put("/:dishId", updateDish);
 
-router.delete("/:id", deleteDish);
+router.delete("/:dishId", deleteDish);
 
 export default router;
