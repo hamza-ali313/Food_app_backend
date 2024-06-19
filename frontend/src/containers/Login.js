@@ -19,18 +19,16 @@ const Login = () => {
   function LoginFunc() {
     if (LoginData.userName && LoginData.Password) {
       axios
-        .post(`${BASE_URL}/auth/login`, {
+        .post(`${BASE_URL}/v1/users/login`, {
           username: LoginData.userName,
           password: LoginData.Password,
         })
         .then((response) => {
-          let data = response.data;
-          console.log(data);
-          console.log(data._id);
-          console.log(data.role);
-          dispatch(login(data.role))
+          let {token,loggedInUser} = response.data;
+          console.log(loggedInUser  );
+          dispatch(login(loggedInUser.role))
           navigate("/createdish")
-          localStorage.setItem("id", data._id);
+          localStorage.setItem("id", token);
         });
     } else {
       alert("Please enter both username and password");
@@ -63,7 +61,6 @@ const Login = () => {
                         onChange={(e) => setLoginData({ ...LoginData, userName: e.target.value })}
                       />
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                       <Form.Label>Password</Form.Label>
                       <Form.Control
@@ -73,7 +70,6 @@ const Login = () => {
                         onChange={(e) => setLoginData({ ...LoginData, Password: e.target.value })}
                       />
                     </Form.Group>
-
                     <Button variant="primary" type="submit" onClick={LoginFunc}>
                       Login
                     </Button>

@@ -11,7 +11,7 @@ import CreateDish from "./containers/CreateDish";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
 import AllDishes from "./containers/AllDishes";
-import ChefDishes from "./containers/ChefDishes";
+import ChefDishes from "./containers/chefDishes";
 
 const App = () => {
   return (
