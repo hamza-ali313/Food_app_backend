@@ -4,6 +4,7 @@ const dishSchema = Joi.object({
   dishName: Joi.string().required(),
   description: Joi.string().required(),
   price: Joi.number().required(),
+  thumbnail: Joi.string().required(),
 });
 
 export const validateDishPayload = (payload) => {

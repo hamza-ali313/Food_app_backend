@@ -10,8 +10,8 @@ import ProtectedRoute from "./containers/ProtectedRoute";
 import CreateDish from "./containers/CreateDish";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
-import AllDishes from "./containers/AllDishes";
-import ChefDishes from "./containers/chefDishes";
+import Dishes from "./containers/Dishes";
+import ChefDishes from "./containers/ChefDishes";
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/alldishes" element={<AllDishes />} />
+          <Route path="/alldishes" element={<Dishes />} />
           <Route path="chefdishes" element={<ChefDishes />} />
           <Route
             path="/createdish"

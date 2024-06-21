@@ -17,9 +17,10 @@ const dishSchema = new mongoose.Schema({
     required: true,
     min: 0, // Minimum price should be 0
   },
-  // dishImage: {
-  //   type: String,
-  // },
+  thumbnail: {
+    type: String,
+    required: true,
+  },
   // chef_id: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'User', // Refers to the 'User' model

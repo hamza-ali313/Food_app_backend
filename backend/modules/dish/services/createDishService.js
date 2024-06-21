@@ -1,16 +1,23 @@
 import createDishRepo from "../repo/createDishRepo.js";
-import createBoomError from '../../../middleware/boomError.js'
-
+import createBoomError from "../../../middleware/boomError.js";
 import { validateDishPayload } from "../../../utils/payloadValidation.js";
 
-export const createDishService = async (payload) => {
+export const createDishService = async (payload, files) => {
+  const img = files?.["thumbnail"] ? files["thumbnail"][0].path : "";
   
-    const newDish = {
-      dishName: payload.dishName,
-      description: payload.description,
-      price: payload.price,
-    };
-    const validatedDish = validateDishPayload(newDish);
-    const savedDish = await createDishRepo(validatedDish.value);
-    return savedDish;
+  const newDish = {
+    dishName: payload.dishName,
+    description: payload.description,
+    price: payload.price,
+    thumbnail: img,
+  };
+  
+  const { error, value } = validateDishPayload(newDish);
+  
+  if (error) {
+    throw createBoomError(400, error.details[0].message);
+  }
+  
+  const savedDish = await createDishRepo(value);
+  return savedDish;
 };

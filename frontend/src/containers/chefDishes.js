@@ -9,7 +9,7 @@ const ChefDishes = () => {
   const chef_ID = localStorage.getItem("id");
 
   function fetchTodo(user_id) {
-    axios.get(`${BASE_URL}/dishes/${chef_ID}`).then((response) => {
+    axios.get(`${BASE_URL}/api/dishes/${chef_ID}`).then((response) => {
       setData(response.data);
     });
   }

@@ -9,7 +9,7 @@ router.post("/", createDish);
 
 router.get("/", getDishes);
 
-// router.get("/:id", getDish);
+// router.get("/:dishId", getDish);
 
 router.put("/:dishId", updateDish);
 

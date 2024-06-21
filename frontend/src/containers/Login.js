@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import "../index.css";
+import {
+  Container,
+  Grid,
+  TextField,
+  Button,
+  Typography,
+  Select,
+  MenuItem,
+  InputLabel,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../services/APIConfig";
@@ -8,27 +16,40 @@ import { login, logout } from "../Redux/authSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const [LoginData, setLoginData] = useState({
+  const [loginData, setLoginData] = useState({
     userName: "",
-    Password: "",
+    password: "",
+    userRole: "",
   });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  function LoginFunc() {
-    if (LoginData.userName && LoginData.Password) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  function loginFunc() {
+    if (loginData.userName && loginData.password) {
       axios
-        .post(`${BASE_URL}/v1/users/login`, {
-          username: LoginData.userName,
-          password: LoginData.Password,
+        .post(`${BASE_URL}/api/v1/users/login`, {
+          username: loginData.userName,
+          password: loginData.password,
+          userRole: loginData.userRole,
         })
         .then((response) => {
-          let {token,loggedInUser} = response.data;
-          console.log(loggedInUser  );
-          dispatch(login(loggedInUser.role))
-          navigate("/createdish")
+          let { token, loggedInUser } = response.data;
+          console.log(loggedInUser);
+          dispatch(login(loggedInUser.role));
+          navigate("/createdish");
           localStorage.setItem("id", token);
+        })
+        .catch((error) => {
+          console.error("Login error:", error);
         });
     } else {
       alert("Please enter both username and password");
@@ -38,47 +59,64 @@ const Login = () => {
   return (
     <div className="register-sec">
       <Container>
-        <Row>
-          <Col md={6}>
+        <Grid container justifyContent="center">
+          <Grid item md={6}>
             <div className="">
               <div className="register">
                 <div className="title">
-                  <h1>Login Form</h1>
+                  <Typography variant="h3" className="text-center">
+                    Login Form
+                  </Typography>
                 </div>
                 <div className="form">
-                  <Form
+                  <form
                     onSubmit={(e) => {
                       e.preventDefault();
-                      // You don't need to setLoginData("") here
                     }}
                   >
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>User Name</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="User Name"
-                        value={LoginData.userName}
-                        onChange={(e) => setLoginData({ ...LoginData, userName: e.target.value })}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        value={LoginData.Password}
-                        onChange={(e) => setLoginData({ ...LoginData, Password: e.target.value })}
-                      />
-                    </Form.Group>
-                    <Button variant="primary" type="submit" onClick={LoginFunc}>
+                    <TextField
+                      fullWidth
+                      label="User Name"
+                      name="userName"
+                      value={loginData.userName}
+                      onChange={handleChange}
+                      margin="normal"
+                    />
+                    <TextField
+                      fullWidth
+                      label="Password"
+                      name="password"
+                      type="password"
+                      value={loginData.password}
+                      onChange={handleChange}
+                      margin="normal"
+                    />
+                    <InputLabel htmlFor="userRole">User Role</InputLabel>
+                    <Select
+                      fullWidth
+                      label="User_Role"
+                      name="userRole"
+                      value={loginData.userRole}
+                      onChange={handleChange}
+                      margin="normal"
+                    >
+                      <MenuItem value="chef">Chef</MenuItem>
+                      <MenuItem value="visitor">Visitor</MenuItem>
+                    </Select>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={loginFunc}
+                      className="mt-5"
+                    >
                       Login
                     </Button>
-                  </Form>
+                  </form>
                 </div>
               </div>
             </div>
-          </Col>
-        </Row>
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );

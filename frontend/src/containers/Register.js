@@ -17,15 +17,14 @@ const Register = () => {
   function RegisterFunc() {
     if (name && email && password && role) {
       axios
-        .post(`${BASE_URL}/auth/register`, {
+        .post(`${BASE_URL}/api/v1/users/register`, {
           username: name,
           email: email,
           password: password,
           role: role,
         })
         .then((response) => {
-          console.log(response.data);
-          // navigate("/Login", { replace: true });
+          navigate("/Login", { replace: true });
         });
     } else {
       alert("invalid input");
