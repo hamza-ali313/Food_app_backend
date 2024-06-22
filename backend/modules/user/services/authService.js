@@ -46,6 +46,7 @@ export const loginService = async (payload) => {
   const user = {
     username: payload.username,
     password: payload.password,
+    userRole: payload.userRole,
   };
   const validatedPayload = validateLoginPayload(user);
   const loggedInUser = await loginRepo(validatedPayload);

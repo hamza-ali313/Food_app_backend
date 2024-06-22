@@ -20,11 +20,11 @@ const dishSchema = new mongoose.Schema({
   thumbnail: {
     type: String,
     required: true,
+  }, 
+  chef_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Refers to the 'User' model
   },
-  // chef_id: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User', // Refers to the 'User' model
-  // },
   // You can add more fields here as needed
 });
 

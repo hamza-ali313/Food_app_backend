@@ -35,6 +35,7 @@ export const validateAuthPayload = (payload) => {
 const loginSchema = Joi.object({
   username: Joi.string().required(),
   password: Joi.string().required(), 
+  userRole: Joi.string().required(), 
 });
 
 

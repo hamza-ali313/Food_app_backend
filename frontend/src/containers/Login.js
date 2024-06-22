@@ -101,7 +101,7 @@ const Login = () => {
                       margin="normal"
                     >
                       <MenuItem value="chef">Chef</MenuItem>
-                      <MenuItem value="visitor">Visitor</MenuItem>
+                      <MenuItem value="foodie">Foodie</MenuItem>
                     </Select>
                     <Button
                       variant="contained"

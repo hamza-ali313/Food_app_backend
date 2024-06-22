@@ -13,7 +13,6 @@ export const createDishService = async (payload, files) => {
   };
   
   const { error, value } = validateDishPayload(newDish);
-  
   if (error) {
     throw createBoomError(400, error.details[0].message);
   }

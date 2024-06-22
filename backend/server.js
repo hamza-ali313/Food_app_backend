@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use(errorMiddleware);
 // Routes here
 app.use("/api/v1/dishes", dishRoutes);
+app.use("/api/v1/chefdishes", dishRoutes);
 app.use("/api/v1/users", authRoutes);
 app.use("/uploads", express.static("uploads"));
 

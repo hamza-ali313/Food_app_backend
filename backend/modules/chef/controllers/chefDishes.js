@@ -1,10 +1,9 @@
-import Dish from "../../../models/dish.js";
+import chefDishesServices from "../services/chefDishesServices";
 
-const getChefDishes = async (req, res, next) => {
+const ChefDishes = async (req, res, next) => {
   const chefId = req.params.chef_ID; 
-
   try {
-    const dishes = await Dish.find({ chef_id: chefId }).exec();
+    const dishes = await chefDishesServices(chefId)
     res.json(dishes);
   } catch (error) {
     console.error("Error fetching dishes:", error);
@@ -12,4 +11,4 @@ const getChefDishes = async (req, res, next) => {
   }
 };
 
-export default getChefDishes;
+export default ChefDishes;
