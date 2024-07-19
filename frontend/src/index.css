@@ -92,6 +92,40 @@ a {
   left: 80px;
 }
 /* create dish css end */
+/* chef Dishes css start */
+.chefdishes-sec .dropdown {
+  text-align: right;
+}
+
+.chefdishes-sec .dropdown button {
+  background: unset !important;
+  border: unset;
+  color: #000 !important;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  box-shadow: unset !important;
+}
+
+.chefdishes-sec .col-lg-4 {
+  position: relative;
+}
+.chefdishes-sec h2 {
+  font-size: 31px;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  padding: 30px 0 10px 10px;
+}
+.chefdishes-sec h2 {
+  font-size: 31px;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  padding: 30px 0 10px 10px;
+}
+/* .chefdishes-sec img {
+  object-fit: contain;
+} */
+/* chef Dishes css end */
 @media only screen and (max-width: 1399px) {
 }
 

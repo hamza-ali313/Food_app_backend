@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
-import { Provider, useSelector } from "react-redux"; // Import useSelector
-import PrivateRoute from "./containers/ProtectedRoute.js"; // Import your PrivateRoute component
+import { Provider } from "react-redux"; // Import useSelector
 
 import App from "./App.js";
 

@@ -9,6 +9,7 @@ export const createDishService = async (payload, files) => {
     dishName: payload.dishName,
     description: payload.description,
     price: payload.price,
+    chef_id: payload.chef_id,
     thumbnail: img,
   };
   

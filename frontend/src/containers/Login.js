@@ -12,7 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../services/APIConfig";
-import { login, logout } from "../Redux/authSlice";
+import { login } from "../Redux/authSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -33,7 +33,8 @@ const Login = () => {
     }));
   };
 
-  function loginFunc() {
+  const loginFunc = (e) => {
+    e.preventDefault();
     if (loginData.userName && loginData.password) {
       axios
         .post(`${BASE_URL}/api/v1/users/login`, {
@@ -44,9 +45,10 @@ const Login = () => {
         .then((response) => {
           let { token, loggedInUser } = response.data;
           console.log(loggedInUser);
-          dispatch(login(loggedInUser.role));
-          navigate("/createdish");
-          localStorage.setItem("id", token);
+          dispatch(login({ role: loggedInUser.role, id: loggedInUser._id , name: loggedInUser.username }));
+          navigate("/CreateDish1");
+          localStorage.setItem("token", token);
+          localStorage.setItem("id", loggedInUser._id);
         })
         .catch((error) => {
           console.error("Login error:", error);
@@ -54,65 +56,59 @@ const Login = () => {
     } else {
       alert("Please enter both username and password");
     }
-  }
+  };
 
   return (
     <div className="register-sec">
       <Container>
         <Grid container justifyContent="center">
           <Grid item md={6}>
-            <div className="">
-              <div className="register">
-                <div className="title">
-                  <Typography variant="h3" className="text-center">
-                    Login Form
-                  </Typography>
-                </div>
-                <div className="form">
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                    }}
+            <div className="register">
+              <div className="title">
+                <Typography variant="h3" className="text-center">
+                  Login Form
+                </Typography>
+              </div>
+              <div className="form">
+                <form onSubmit={loginFunc}>
+                  <TextField
+                    fullWidth
+                    label="User Name"
+                    name="userName"
+                    value={loginData.userName}
+                    onChange={handleChange}
+                    margin="normal"
+                  />
+                  <TextField
+                    fullWidth
+                    label="Password"
+                    name="password"
+                    type="password"
+                    value={loginData.password}
+                    onChange={handleChange}
+                    margin="normal"
+                  />
+                  <InputLabel htmlFor="userRole">User Role</InputLabel>
+                  <Select
+                    fullWidth
+                    label="User_Role"
+                    name="userRole"
+                    value={loginData.userRole}
+                    onChange={handleChange}
+                    margin="normal"
                   >
-                    <TextField
-                      fullWidth
-                      label="User Name"
-                      name="userName"
-                      value={loginData.userName}
-                      onChange={handleChange}
-                      margin="normal"
-                    />
-                    <TextField
-                      fullWidth
-                      label="Password"
-                      name="password"
-                      type="password"
-                      value={loginData.password}
-                      onChange={handleChange}
-                      margin="normal"
-                    />
-                    <InputLabel htmlFor="userRole">User Role</InputLabel>
-                    <Select
-                      fullWidth
-                      label="User_Role"
-                      name="userRole"
-                      value={loginData.userRole}
-                      onChange={handleChange}
-                      margin="normal"
-                    >
-                      <MenuItem value="chef">Chef</MenuItem>
-                      <MenuItem value="foodie">Foodie</MenuItem>
-                    </Select>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={loginFunc}
-                      className="mt-5"
-                    >
-                      Login
-                    </Button>
-                  </form>
-                </div>
+                    <MenuItem value="chef">Chef</MenuItem>
+                    <MenuItem value="foodie">Foodie</MenuItem>
+                  </Select>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    className="mt-5"
+                  >
+                    Login
+                  </Button>
+                </form>
               </div>
             </div>
           </Grid>

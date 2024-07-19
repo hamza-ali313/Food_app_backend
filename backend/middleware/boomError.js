@@ -1,7 +1,9 @@
 import Boom from 'boom';
 
-function createBoomError(statusCode, message, data) {
-    throw Boom.boomify(new Error(message), { statusCode, data });
-  }
-  
-  export default createBoomError;
+const createBoomError = (statusCode, message, data) => {
+    const error = Boom.boomify(new Error(message), { statusCode });
+    error.output.payload.data = data;
+    return error;
+};
+
+export default createBoomError;

@@ -1,5 +1,8 @@
 export const errorMiddleware = (err, req, res, next) => {
-    const statusCode = err.statusCode || 500;
-    res.status(statusCode).json({ error: err.message });
-  };
-  
+  if (err.isBoom) {
+    const { output } = err;
+    res.status(output.statusCode).json(output.payload);
+  } else {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};

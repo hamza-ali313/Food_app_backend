@@ -1,13 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
-
-import reportWebVitals from "./reportWebVitals";
-
+import "./index.css"
 import ProtectedRoute from "./containers/ProtectedRoute";
-import CreateDish from "./containers/CreateDish";
+import CreateDish1 from "./containers/CreateDish1";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
 import Dishes from "./containers/Dishes";
@@ -26,7 +22,7 @@ const App = () => {
             path="/createdish"
             element={
               <ProtectedRoute>
-                <CreateDish />
+                <CreateDish1 />
               </ProtectedRoute>
             }
           />

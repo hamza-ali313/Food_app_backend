@@ -18,6 +18,10 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(errorMiddleware);
+
+
+
+
 // Routes here
 app.use("/api/v1/dishes", dishRoutes);
 app.use("/api/v1/chefdishes", dishRoutes);
